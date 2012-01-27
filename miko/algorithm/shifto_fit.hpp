@@ -1,3 +1,5 @@
+#ifndef SHIFTTO_FIT_HPP_INCLUDED
+#define SHIFTTO_FIT_HPP_INCLUDED
 #include<vector>
 #include<boost/tr1/functional.hpp>
 
@@ -17,3 +19,4 @@ operator |(std::vector<T,Allocator>& source,F f)
 {
 	return f(source);
 }
+#endif

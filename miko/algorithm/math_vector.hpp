@@ -1,4 +1,5 @@
-// math_vector.hpp
+#ifdef MATH_VECTOR_HPP_INCLUDED
+#define MATH_VECTOR_HPP_INCLUDED
 #include<algorithm>
 #include<ostream>
 
@@ -67,3 +68,4 @@ namespace math{
 	}
 }
 }
+#endif

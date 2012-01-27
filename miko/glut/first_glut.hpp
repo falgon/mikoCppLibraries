@@ -1,3 +1,5 @@
+#ifndef FIRST_GLUT_HPP_INCLUDED
+#define FIRST_GLUT_HPP_INCLUDED
 #include<GL/glut.h>
 namespace miko{
 struct gluting{
@@ -37,3 +39,4 @@ struct gluting{
 	}
 };
 }
+#endif
