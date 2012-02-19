@@ -1,5 +1,5 @@
 #ifndef INCLUDED_DISPLAY_ALL_HPP
-#define INCLUDED_DISPLAY_ALLHPP
+#define INCLUDED_DISPLAY_ALL_HPP
 #include<iterator>
 #include<iostream>
 #include<boost/range.hpp>
