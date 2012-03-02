@@ -1,7 +1,7 @@
 #ifndef MIKO_ANY_INCLUDED
 #define MIKO_ANY_INCLUDED
 
-#define nullptr 0  //‚µ‚å‚¤‚ª–³‚­...
+#define nullptr 0  //ã—ã‚‡ã†ãŒãªã...
 
 #include<typeinfo>
 #include<cstdlib>
