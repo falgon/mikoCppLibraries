@@ -59,10 +59,10 @@ public:
 		return *this;
 	}
         template<class T,size_t N>
-        any& operator=(const T(&value)[N])
+        any& operator=(T(&value)[N])
         {
 		if(!content)delete content;
-                content=new place::holder<const T*>(value);
+                content=new place::holder<T*>(value);
                 array=N;
                 return *this;
         }                
