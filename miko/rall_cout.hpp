@@ -23,7 +23,7 @@ public:
         {
                 this->token=token;
                 this->last_token=last_token;
-        }  
+        }
 
         template<class _Tp>
         void operator<<(const _Tp& container)
@@ -43,6 +43,19 @@ public:
                                 >(std::cout,token));
                 std::cout<<last_token;
         }
+
+        template<class InputIterator>
+        void operator<<(const std::pair<InputIterator,InputIterator>& t)
+        {
+                std::copy(t.first,t.second,
+                                std::ostream_iterator<
+                                        typename std::iterator_traits<
+                                                InputIterator
+                                        >::value_type
+                                 >(std::cout,token));
+                std::cout<<last_token;
+        }
+
         template<class _lTp,class _rTp>
         void operator<<(const std::map<_lTp,_rTp>& m)
         {
