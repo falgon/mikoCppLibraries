@@ -1,7 +1,10 @@
+// Boost Software License - Version 1.0 - http://www.boost.org/LICENSE_1_0.txt 
 #ifndef INCLUDED_RANGE_ALL_OPERATOR
 #define INCLUDED_RANGE_ALL_OPERATOR
 #include<iterator>
 #include<iostream>
+#include<boost/range/algorithm/for_each.hpp>
+#include<boost/lambda/lambda.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
 #endif
@@ -41,6 +44,12 @@ public:
                                 >(std::cout,cout.token));
                 std::cout<<cout.last_token;
         }
+        template<class _lTp,class _rTp>
+        friend void operator<<(range_all_op& cout,const std::map<_lTp,_rTp>& m)
+        {
+                for(typename std::map<_lTp,_rTp>::const_iterator it=m.begin(); it!=m.end(); ++it)
+                        std::cout<<(*it).first<<cout.token<<(*it).second<<cout.last_token;
+        }                               
 }rall_cout;
 
 } // namespace miko
