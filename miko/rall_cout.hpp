@@ -3,8 +3,6 @@
 #define INCLUDED_RANGE_ALL_OPERATOR
 #include<iterator>
 #include<iostream>
-#include<boost/range/algorithm/for_each.hpp>
-#include<boost/lambda/lambda.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
 #endif
