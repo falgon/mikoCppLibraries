@@ -3,6 +3,7 @@
 #define INCLUDED_RANGE_ALL_COUT
 #include<iterator>
 #include<iostream>
+#include<map>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
 #endif
@@ -25,7 +26,7 @@ public:
         }  
 
         template<class _Tp>
-        friend void operator<<(range_all_op& cout,const _Tp& container)
+        void operator<<(const _Tp& container)
         {
 #ifdef __GXX_EXPERIMENTAL_CXX0X__
                 using std::begin;
@@ -39,14 +40,14 @@ public:
                                         typename std::iterator_traits<
 				                typename _Tp::iterator
                                         >::value_type
-                                >(std::cout,cout.token));
-                std::cout<<cout.last_token;
+                                >(std::cout,token));
+                std::cout<<last_token;
         }
         template<class _lTp,class _rTp>
-        friend void operator<<(range_all_op& cout,const std::map<_lTp,_rTp>& m)
+        void operator<<(const std::map<_lTp,_rTp>& m)
         {
                 for(typename std::map<_lTp,_rTp>::const_iterator it=m.begin(); it!=m.end(); ++it)
-                        std::cout<<(*it).first<<cout.token<<(*it).second<<cout.last_token;
+                        std::cout<<(*it).first<<token<<(*it).second<<last_token;
         }                               
 }rall_cout;
 
