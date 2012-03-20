@@ -4,6 +4,7 @@
 #include<iterator>
 #include<iostream>
 #include<map>
+#include<boost/concept_check.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
 #endif
@@ -47,6 +48,7 @@ public:
         template<class InputIterator>
         void operator<<(const std::pair<InputIterator,InputIterator>& t)
         {
+                boost::function_requires<boost::InputIteratorConcept<InputIterator> >();
                 std::copy(t.first,t.second,
                                 std::ostream_iterator<
                                         typename std::iterator_traits<
