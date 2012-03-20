@@ -5,6 +5,8 @@
 #include<iostream>
 #include<map>
 #include<boost/concept_check.hpp>
+#include<boost/tuple/tuple.hpp>
+#include<boost/foreach.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
 #endif
@@ -42,7 +44,7 @@ public:
 				                typename _Tp::iterator
                                         >::value_type
                                 >(std::cout,token));
-                std::cout<<last_token;
+                std::cout<<last_token<<std::flush;
         }
 
         template<class InputIterator>
@@ -55,14 +57,15 @@ public:
                                                 InputIterator
                                         >::value_type
                                  >(std::cout,token));
-                std::cout<<last_token;
+                std::cout<<last_token<<std::flush;
         }
 
         template<class _lTp,class _rTp>
         void operator<<(const std::map<_lTp,_rTp>& m)
         {
-                for(typename std::map<_lTp,_rTp>::const_iterator it=m.begin(); it!=m.end(); ++it)
-                        std::cout<<(*it).first<<token<<(*it).second<<last_token;
+                _lTp key; _rTp value;
+                BOOST_FOREACH(boost::tie(key,value),m)
+                        std::cout<<key<<token<<value<<last_token<<std::flush;
         }                               
 }rall_cout;
 
