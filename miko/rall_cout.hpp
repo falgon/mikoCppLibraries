@@ -9,8 +9,10 @@
 #include<boost/foreach.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
+#include<numeric>
 #endif
 namespace miko{
+
 class range_all_op{
 	const char* token;
 	const char* last_token;
@@ -26,6 +28,14 @@ public:
         {
                 this->token=token;
                 this->last_token=last_token;
+        }
+
+        template<class InputIterator>
+        void out_map_range(const InputIterator first,const InputIterator last)
+        {
+                boost::function_requires<boost::InputIteratorConcept<InputIterator> >();
+                for(InputIterator it=first; it!=last; ++it)
+                        std::cout<<(*it).first<<token<<(*it).second<<last_token<<std::flush;
         }
 
         template<class _Tp>
