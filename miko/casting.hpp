@@ -1,5 +1,3 @@
-#ifndef CASTING_HPP_INCLUDED
-#define CASTING_HPP_INCLUDED
 namespace miko{
 template<class from>
 class Static_Cast{
@@ -92,5 +90,3 @@ Lexical_Cast<from> le_cast(from v)
 	return Lexical_Cast<from>(v);
 }
 }
-
-#endif

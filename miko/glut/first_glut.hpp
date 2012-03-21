@@ -1,5 +1,5 @@
-#ifndef FIRST_GLUT_HPP_INCLUDED
-#define FIRST_GLUT_HPP_INCLUDED
+#ifndef INCLUDED_FIRST_GLUT_HPP
+#define INCLUDED_FIRST_GLUT_HPP
 #include<GL/glut.h>
 namespace miko{
 struct gluting{
@@ -17,13 +17,11 @@ struct gluting{
 		glEnable(GL_DEPTH_TEST);
 	}
 
-	static void disp()
+	static void disp_sq()
 	{
 		glClear (GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 		glLoadIdentity();
 		gluLookAt(40.0,10.0,20.0,0.0,0.0,0.0,0.0,1.0,0.0);
-		glutSolidCube(2.0);
-		glFlush();
 	}
 
 	static void Reshape(const int w,const int h)
