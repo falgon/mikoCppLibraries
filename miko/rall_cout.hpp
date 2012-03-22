@@ -4,6 +4,8 @@
 #include<iterator>
 #include<iostream>
 #include<map>
+#include<stack>
+#include<queue>
 #include<boost/concept_check.hpp>
 #include<boost/tuple/tuple.hpp>
 #include<boost/foreach.hpp>
@@ -28,14 +30,6 @@ public:
         {
                 this->token=token;
                 this->last_token=last_token;
-        }
-
-        template<class InputIterator>
-        void out_map_range(const InputIterator first,const InputIterator last)
-        {
-                boost::function_requires<boost::InputIteratorConcept<InputIterator> >();
-                for(InputIterator it=first; it!=last; ++it)
-                        std::cout<<(*it).first<<token<<(*it).second<<last_token<<std::flush;
         }
 
         template<class _Tp>
@@ -70,13 +64,40 @@ public:
                 std::cout<<last_token<<std::flush;
         }
 
+        //For Container Adapter. Both are High cost.....
+        template<class _Tp,class Range>
+        void operator<<(std::stack<_Tp,Range> lhs)
+        {
+                for(;!st.empty();){
+                        std::cout<<lhs.top()<<token;
+                        lhs.pop();
+                }
+                std::cout<<last_token<<std::flush;
+        }
+        template<class _lTp,class Range>
+        void operator<<(std::queue<_Tp,Range> lhs)
+        {
+                for(;!lhs.empty();){
+                        std::cout<<lhs.top()<<token;
+                        lhs.pop();
+                }
+        }
+
         template<class _lTp,class _rTp>
         void operator<<(const std::map<_lTp,_rTp>& m)
         {
                 _lTp key; _rTp value;
                 BOOST_FOREACH(boost::tie(key,value),m)
                         std::cout<<key<<token<<value<<last_token<<std::flush;
-        }                               
+        }
+
+        template<class InputIterator>
+        void out_map_range(const InputIterator first,const InputIterator last) //HACK
+        {
+                boost::function_requires<boost::InputIteratorConcept<InputIterator> >();
+                for(InputIterator it=first; it!=last; ++it)
+                        std::cout<<(*it).first<<token<<(*it).second<<last_token<<std::flush;
+        }        
 }rall_cout;
 
 } // namespace miko
