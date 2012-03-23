@@ -68,14 +68,14 @@ public:
         template<class _Tp,class Range>
         void operator<<(std::stack<_Tp,Range> lhs)
         {
-                for(;!st.empty();){
+                for(;!lhs.empty();){
                         std::cout<<lhs.top()<<token;
                         lhs.pop();
                 }
                 std::cout<<last_token<<std::flush;
         }
         template<class _lTp,class Range>
-        void operator<<(std::queue<_Tp,Range> lhs)
+        void operator<<(std::queue<_lTp,Range> lhs)
         {
                 for(;!lhs.empty();){
                         std::cout<<lhs.top()<<token;
