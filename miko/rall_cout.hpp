@@ -33,8 +33,19 @@ public:
         }
 
         template<class _Tp>
-        void operator<<(const _Tp& container)
+        void operator<<(const _Tp &container)
         {
+                std::copy(container.begin(),container.end(),
+                                std::ostream_iterator<
+                                        typename std::iterator_traits<
+				                typename _Tp::iterator
+                                        >::value_type
+                                >(std::cout,token));
+                std::cout<<last_token<<std::flush;
+        }
+        template<class _Tp,size_t size>
+        void operator<<(_Tp (&ar)[size])
+        {                
 #ifdef __GXX_EXPERIMENTAL_CXX0X__
                 using std::begin;
                 using std::end;
@@ -42,12 +53,8 @@ public:
                 using boost::begin;
                 using boost::end;
 #endif
-                std::copy(begin(container),end(container),
-                                std::ostream_iterator<
-                                        typename std::iterator_traits<
-				                typename _Tp::iterator
-                                        >::value_type
-                                >(std::cout,token));
+                std::copy(begin(ar),end(ar),
+                                std::ostream_iterator<_Tp>(std::cout,token));
                 std::cout<<last_token<<std::flush;
         }
 
