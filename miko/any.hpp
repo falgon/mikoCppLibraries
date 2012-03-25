@@ -1,8 +1,6 @@
 #ifndef MIKO_ANY_INCLUDED
 #define MIKO_ANY_INCLUDED
-
-#define nullptr 0  //‚µ‚å‚¤‚ª–³‚­...
-
+#include<miko/utility/nullptr.hpp>
 #include<typeinfo>
 #include<cstdlib>
 #include<iostream>
