@@ -71,7 +71,7 @@ public:
                 std::cout<<last_token<<std::flush;
         }
 
-        //For Container Adapter. Both are High cost.....
+        //For Container Adapter. These are High cost.....
         template<class _Tp,class Range>
         void operator<<(std::stack<_Tp,Range> lhs)
         {
