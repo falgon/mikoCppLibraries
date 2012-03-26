@@ -87,8 +87,8 @@ public:
                 }
                 std::cout<<last_token<<std::flush;
         }
-        template<class _Tp,class Range>
-        void operator<<(std::priority_queue<_Tp,Range> lhs)
+        template<class _Tp,class Range,class Compare>
+        void operator<<(std::priority_queue<_Tp,Range,Compare> lhs)
         {
                 for(;!lhs.empty();){
                         std::cout<<lhs.top()<<token;
