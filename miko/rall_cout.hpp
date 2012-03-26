@@ -11,7 +11,6 @@
 #include<boost/foreach.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
-#include<numeric>
 #endif
 namespace miko{
 
