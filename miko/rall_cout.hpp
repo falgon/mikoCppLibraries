@@ -36,9 +36,7 @@ public:
         {
                 std::copy(container.begin(),container.end(),
                                 std::ostream_iterator<
-                                        typename std::iterator_traits<
-				                typename _Tp::iterator
-                                        >::value_type
+                                        typename _Tp::value_type
                                 >(std::cout,token));
                 std::cout<<last_token<<std::flush;
         }
