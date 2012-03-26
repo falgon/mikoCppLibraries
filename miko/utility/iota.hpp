@@ -1,6 +1,6 @@
 #ifndef INCLUDED_IOTA
 #define INCLUDED_IOTA
-#ifndef __GXX0X_EXPERIMENTAL_CXX0X__
+#ifdef __GXX0X_EXPERIMENTAL_CXX0X__
 #include<algorithm>
 #endif
 #include<set>
