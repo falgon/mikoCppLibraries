@@ -81,13 +81,23 @@ public:
                 }
                 std::cout<<last_token<<std::flush;
         }
-        template<class _lTp,class Range>
-        void operator<<(std::queue<_lTp,Range> lhs)
+        template<class _Tp,class Range>
+        void operator<<(std::queue<_Tp,Range> lhs)
+        {
+                for(;!lhs.empty();){
+                        std::cout<<lhs.front()<<token;
+                        lhs.pop();
+                }
+                std::cout<<last_token<<std::flush;
+        }
+        template<class _Tp,class Range>
+        void operator<<(std::priority_queue<_Tp,Range> lhs)
         {
                 for(;!lhs.empty();){
                         std::cout<<lhs.top()<<token;
                         lhs.pop();
                 }
+                std::cout<<last_token<<std::flush;
         }
 
         template<class _lTp,class _rTp>
