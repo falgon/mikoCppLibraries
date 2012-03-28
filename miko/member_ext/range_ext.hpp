@@ -1,4 +1,3 @@
-// Boost Software License - Version 1.0 - http://www.boost.org/LICENSE_1_0.txt 
 #ifndef INCLUDED_RANGE_EXTENTION
 #define INCLUDED_RANGE_EXTENTION
 #include<boost/utility/result_of.hpp>

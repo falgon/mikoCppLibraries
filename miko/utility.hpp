@@ -4,4 +4,5 @@
 #include<miko/utility/string_replace.hpp>
 #include<miko/utility/iota.hpp>
 #include<miko/utility/nullptr.hpp>
+#include<miko/utility/init_iota.hpp>
 #endif
