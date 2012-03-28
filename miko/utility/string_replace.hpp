@@ -1,3 +1,5 @@
+#ifndef INCLUDED_STRING_REPLACE
+#define INLCUDED_STRING_REPLACE
 #include<string>
 #include<cstring>
 
@@ -15,3 +17,4 @@ std::string& str_replace(std::string& str,const char* src,const char* rhs)
 	return str;
 }
 }
+#endif
