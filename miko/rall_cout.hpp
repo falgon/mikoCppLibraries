@@ -96,8 +96,8 @@ public:
                 std::cout<<last_token<<std::flush;
         }
 
-        template<class _lTp,class _rTp>
-        void operator<<(const std::map<_lTp,_rTp>& m)
+        template<class _lTp,class _rTp,class Compare>
+        void operator<<(const std::map<_lTp,_rTp,Compare>& m)
         {
                 _lTp key; _rTp value;
                 BOOST_FOREACH(boost::tie(key,value),m)
