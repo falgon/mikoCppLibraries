@@ -103,6 +103,13 @@ public:
                 BOOST_FOREACH(boost::tie(key,value),m)
                         std::cout<<key<<token<<value<<last_token<<std::flush;
         }
+        template<class _lTp,class _rTp,class Compare>
+        void operator<<(const std::multimap<_lTp,_rTp,Compare>& m)
+        {
+                _lTp key; _rTp value;
+                BOOST_FOREACH(boost::tie(key,value),m)
+                        std::cout<<key<<token<<value<<last_token<<std::flush;
+        }
 
         template<class InputIterator>
         void out_map_range(const InputIterator first,const InputIterator last) //HACK
