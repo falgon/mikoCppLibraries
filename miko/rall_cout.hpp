@@ -10,6 +10,7 @@
 #include<boost/foreach.hpp>
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #include<boost/range.hpp>
+#include<boost/move/move.hpp>
 #endif
 namespace miko{
 
@@ -45,11 +46,13 @@ public:
 #ifdef __GXX_EXPERIMENTAL_CXX0X__
                 using std::begin;
                 using std::end;
+                using std::make_move_iterator;
 #else
                 using boost::begin;
                 using boost::end;
+                using boost::make_move_iterator;
 #endif
-                std::copy(begin(ar),end(ar),
+                std::copy(make_move_iterator(begin(ar)),make_move_iterator(end(ar)),
                                 std::ostream_iterator<_Tp>(std::cout,token));
                 std::cout<<last_token<<std::flush;
         }
@@ -57,8 +60,13 @@ public:
         template<class InputIterator>
         void operator<<(const std::pair<InputIterator,InputIterator>& t)
         {
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
+                using std::make_move_iterator;
+#else
+                using boost::make_move_iterator;
+#endif
                 boost::function_requires<boost::InputIteratorConcept<InputIterator> >();
-                std::copy(t.first,t.second,
+                std::copy(make_move_iterator(t.first),make_move_iterator(t.second),
                                 std::ostream_iterator<
                                         typename std::iterator_traits<
                                                 InputIterator
@@ -109,6 +117,11 @@ public:
                 _lTp key; _rTp value;
                 BOOST_FOREACH(boost::tie(key,value),m)
                         std::cout<<key<<token<<value<<last_token<<std::flush;
+        }
+        template<class _lTp,class _rTp>
+        void operator<<(const std::pair<_lTp,_rTp>& p)
+        {
+                std::cout<<p.first<<token<<p.second<<last_token<<std::flush;
         }
 
         template<class InputIterator>
