@@ -3,9 +3,13 @@
 #include<sys/types.h>
 #include<pwd.h>
 #include<iostream>
-#include<boost/array.hpp>
 #include<boost/any.hpp>
 #include<boost/assign.hpp>
+#ifndef __GXX_EXPERIMENTAL_CXX0X__
+#include<boost/array.hpp>
+#else
+#include<array>
+#endif
 
 namespace miko{
 class usr_info{
@@ -32,10 +36,14 @@ public:
        	const char* get_usrrealname()const{return data->pw_gecos;}
 	const char* get_usrhomedirectory()const{return data->pw_dir;}
 	const char* get_usrshell()const{return data->pw_shell;}
-	
-	boost::array<boost::any,6> make_array()
+#ifndef __GXX_EXPERIMENTAL_CXX0X__
+        using boost::array;
+#else
+        using std::array;
+#endif        
+	array<boost::any,6> make_array()
 	{
-		boost::array<boost::any,6> usr_d={
+		array<boost::any,6> usr_d={
 			data->pw_name,
 			data->pw_uid,
 			data->pw_gid,
