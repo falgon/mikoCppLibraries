@@ -1,1 +1,1 @@
-Useless libraries
+Useless libraries。移行→SrookCppLibraries
